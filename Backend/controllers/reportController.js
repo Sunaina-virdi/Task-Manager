@@ -84,7 +84,7 @@ const exportUsersReport = async(req,res) =>{
                         if(task.status === "Pending"){
                             userTaskMap[assignedUser._id].pendingTasks += 1;
                         }
-                        else if(task.status === "In progress"){
+                        else if(task.status === "In Progress"){
                             userTaskMap[assignedUser._id].inProgressTasks += 1;
                         }
                         else if(task.status === "Completed"){
@@ -111,15 +111,15 @@ const exportUsersReport = async(req,res) =>{
         ];
         Object.values(userTaskMap).forEach((user) => {
             worksheet.addRow(user);
-        })
+        });
 
         res.setHeader(
             "Content-Type",
-            "application/vnd.openxmlformats-officedocuments.spreadsheetml.sheet"
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         );
         res.setHeader(
             "Content-Disposition",
-            'attachment;filename="users_report.xlsx"'
+            'attachment; filename="users_report.xlsx"'
         );
 
         return workbook.xlsx.write(res).then(() => {

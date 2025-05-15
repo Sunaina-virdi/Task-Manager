@@ -357,7 +357,7 @@ const getUserDashboardData = async(req,res) => {
         const taskPriorities = ["Low","Medium","High"];
         const taskPriorityLevelsRaw = await Task.aggregate([
             {$match:{assignedTo: userId}},
-            {$group: {_id:"$prioriity",count:{$sum : 1}}},
+            {$group: {_id:"$priority",count:{$sum : 1}}},
         ]);
 
         const taskPriorityLevels = taskPriorities.reduce((acc,priority) => {

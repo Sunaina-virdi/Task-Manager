@@ -19,7 +19,7 @@ const ManageUsers = () => {
     }
   };
 
-  // download task report
+  // download user report
   const handleDownloadReport = async () => {
     try{
       const response = await axiosInstance.get(API_PATHS.REPORTS.EXPORT_USERS, {
@@ -36,7 +36,7 @@ const ManageUsers = () => {
       window.URL.revokeObjectURL(url);
     }catch(error){
       console.error("Error downloading expense details:",error);
-      console.log(API_PATHS.REPORTS.EXPORT_USERS);
+      // console.log(API_PATHS.REPORTS.EXPORT_USERS);
       toast.error("Failed to download expense details. Please try again.");
     }
   };
